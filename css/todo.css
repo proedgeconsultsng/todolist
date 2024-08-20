@@ -144,6 +144,14 @@ ul li span:hover{
     background: #cc0000;
 }
 
+.edit-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 
 
 

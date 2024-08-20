@@ -66,6 +66,36 @@ function clearAllTasks() {
     saveData(); // Save the empty state to localStorage
 }
 
+// Allow editing of tasks
+listcontainerel.addEventListener("dblclick", function(e) {
+    if (e.target.tagName === "LI") {
+        let currentTask = e.target;
+        let currentText = currentTask.firstChild.textContent;
+
+        // Create an input element to edit the task
+        let input = document.createElement("input");
+        input.type = "text";
+        input.value = currentText;
+        input.classList.add("edit-input");
+        currentTask.innerHTML = '';  // Clear the current task content
+        currentTask.appendChild(input);
+
+        // Handle saving the edited task
+        input.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                currentTask.innerHTML = input.value;  // Set the new task content
+                let span = document.createElement("span");
+                span.innerHTML = '\u00d7';
+                currentTask.appendChild(span);
+                saveData();
+            }
+        });
+
+        // Focus on the input
+        input.focus();
+    }
+});
+
 
 
 // Show the saved tasks when the page loads
