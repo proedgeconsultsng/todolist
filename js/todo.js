@@ -45,4 +45,11 @@ function showData(){
     listcontainerel.innerHTML = localStorage.getItem("data");
 }
 
+
+function clearAllTasks() {
+    listcontainerel.innerHTML = ''; // Clear the task list
+    saveData(); // Save the empty state to localStorage
+}
+
+
 saveData();
